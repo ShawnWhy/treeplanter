@@ -1,0 +1,149 @@
+.ground{
+    width:100%;
+    height:70%;
+    top:30%;
+    background-color: rgb(54, 42, 38);
+    /* transform:scaleY(.5); */
+
+    position:relative;
+    /* bottom:70%; */
+    overflow: visible;
+}
+
+.invisibleP{
+    display:none;
+}
+
+
+.treeContainer{
+    position:absolute;
+    height:400px;
+    width:200px;
+    overflow:h;
+    
+}
+
+.bulk{
+    margin:auto;
+    height:60px;
+    width:30px;
+    background-color: cadetblue;
+    position:relative;
+    border-radius:5px; 
+    top:0px;
+    animation:bulk .5s both;
+    z-index:1
+
+}
+
+
+.branch{
+    margin:auto;
+    width:50%;
+    /* background-color: cadetblue; */
+    position: absolute;
+    transform-origin: bottom;
+    border-radius:5px; 
+    animation:branch .5s both;
+}
+
+.branch1{
+    margin:auto;
+    width:50%;
+    /* background-color: cadetblue; */
+    position: absolute;
+    transform-origin: bottom;
+    border-radius:5px; 
+    animation:branch1 .5s both;
+}
+
+.branch2{
+    margin:auto;
+    width:50%;
+    /* background-color: cadetblue; */
+    position: absolute;
+    transform-origin: bottom;
+    border-radius:5px; 
+    animation:branch2 .5s both;
+}
+
+
+@keyframes branch{
+    0%{height:1%}
+    100%{height:50%}
+}
+@keyframes branch1{
+    0%{height:1%}
+    100%{height:40%}
+}
+@keyframes branch2{
+    0%{height:1%}
+    100%{height:60%}
+}
+
+@keyframes bulk{
+    0%{height:1px;bottom:-200%}
+    100%{height:300px;bottom:-100%}
+}
+
+.apple{
+    width:40px;
+    height:40px;
+    
+    background-color: red;
+    border-radius: 50%;
+    margin:auto;
+    position:absolute;
+    /* bottom:60%; */
+    transform-origin: center;
+}
+
+.apple2{
+    width:3%;
+    height:auto;
+    padding-top:3%;
+    
+    border-radius: 50%;
+    margin:auto;
+    position:absolute;
+    transform-origin: center;
+    z-index:1
+}
+
+.appleFall{
+    animation:appleFall .5s both;
+}
+.appleFall2{
+    animation:appleFall2 .5s both;
+}
+
+@keyframes appleFall{
+    0%{bottom:60%}
+    100%{bottom:0%}
+}
+@keyframes appleFall2{
+    0%{transform:translateY(0%)}
+    100%{transform:translateY(1200%)}
+}
+.apple:hover{
+    transform:scale(1.5)
+}
+.apple2:hover{
+    transform:scale(1.5)
+}
+
+.leaf{
+    border-radius:50%;
+    position:absolute;
+    z-index:-1;
+    animation:leafGrow .5s both;
+}
+
+@keyframes leafGrow{
+    0%{transform:scale(1%)}
+    100%{transform:scale(100%)}
+}
+
+body{
+    background-color: rgb(182, 240, 255) ! important;
+}
