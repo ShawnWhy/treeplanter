@@ -19,7 +19,12 @@
     position:absolute;
     height:400px;
     width:200px;
-    overflow:h;
+    
+}
+.treeContainerInner{
+    position:relative;
+    height:100%;
+    width:100%;
     
 }
 
@@ -146,4 +151,86 @@
 
 body{
     background-color: rgb(182, 240, 255) ! important;
+    overflow: hidden;
+}
+
+.fallLeaf{
+    position:relative;
+    height:100%;
+    width:100%;
+    border-radius:50%;
+    animation:leafFall .1s 10;
+
+}
+.fallLeafContainer{
+   position:absolute;
+   animation:leafFallContainer 1s ease-in both;
+
+
+}
+.fallLeafContainer1{
+   position:absolute;
+   animation:leafFallContainer1 1s ease-in both;
+
+
+}
+.fallLeafContainer2{
+   position:absolute;
+   animation:leafFallContainer2 1s ease-in both;
+
+
+}
+
+
+.shake{
+    animation: shakeTree .5s ease-out 2;
+    transform-origin: bottom center;
+}
+
+@keyframes shakeTree{
+        /* 0%{transform:rotate(1deg)}; */
+  50%{transform:rotate(-1deg)};
+
+   100%{transform:rotate(4deg)};
+
+
+}
+
+@keyframes leafFall{
+    0%{transform:scaleY(1)
+        /* translateY(0%) */
+    }
+    25%{transform:scaleY(.5)}
+    50%{transform:scaleY(.1)}
+    75%{transform:scaleY(.5)}
+    100%{transform:scaleY(1);
+        /* translateY(500%) */
+    };
+}
+
+@keyframes leafFallContainer{
+
+100%{
+    /* transform: translateY(1000%); */
+    top:60%;
+
+}
+}
+
+@keyframes leafFallContainer1{
+
+100%{
+    /* transform: translateY(1000%); */
+    top:80%;
+
+}
+}
+
+@keyframes leafFallContainer2{
+
+100%{
+    /* transform: translateY(1000%); */
+    top:70%;
+
+}
 }

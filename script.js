@@ -125,8 +125,13 @@ function growTree(mouseLeft) {
   $(treeContainer).css("z-index", randTop);
 
     $(treeContainer).css("top", randTop + "%");
+    var treeContainerInner = $("<div>");
+    $(treeContainerInner).addClass("treeContainerInner");
+    
 
-  $(treeContainer).append(bulk);
+
+  $(treeContainerInner).append(bulk);
+  $(treeContainer.append(treeContainerInner))
   $(".ground").append(treeContainer);
 
   setTimeout(() => {
@@ -138,7 +143,7 @@ function growTree(mouseLeft) {
         setTimeout(() => {
           createLeaves("rgb("+red+","+green+","+blue+")", bulk)
           setTimeout(() => {
-            growFruit(treeContainer);
+            growFruit(treeContainerInner);
           }, 1000);
         }, 400);
       }, 400);
@@ -190,3 +195,71 @@ $(document).on('click','.apple2', event=>{
   
   
 });
+
+$(document).on('click','.bulk', event=>{
+
+  event.preventDefault();
+  event.stopPropagation();
+  leavesFall(event.target)
+
+})
+
+
+
+function leavesFall(bulk){
+
+  $(bulk).parent().addClass("shake")
+  let leaveMass = $(bulk).find(".leaf");
+  var leafColor = $(leaveMass[0]).css("background-color");
+
+  for (i = 0; i < 11; i++) {
+    setTimeout(() => {
+      let rand = Math.floor(Math.random()*3)
+      let fallLeaf = $("<div>");
+      fallLeaf.addClass("fallLeaf");
+      let XLen = Math.floor(Math.random() * 180 - 40);
+      let YLen = Math.floor(Math.random() * 60 - 40);
+      let leafSize = Math.floor(Math.random() * 20 + 5);
+      let leafSize2 = leafSize * 2;
+      fallLeaf.css("background-color", leafColor);
+
+      let fallLeafContainer = $("<div>");
+      fallLeafContainer.css("height", leafSize + "px");
+      fallLeafContainer.css("width", leafSize2 + "px");
+      // fallLeaf.css("height", leafSize + "px");
+      // fallLeaf.css("width", leafSize2 + "px");
+
+      fallLeafContainer.css("left", XLen + "%");
+      fallLeafContainer.css("top", YLen + "%");
+      switch (rand) {
+        case 0:
+          fallLeafContainer.addClass("fallLeafContainer");
+          break;
+        case 1:
+          fallLeafContainer.addClass("fallLeafContainer1");
+          break;
+        case 2:
+          fallLeafContainer.addClass("fallLeafContainer2");
+          break;
+
+        default:
+          fallLeafContainer.addClass("fallLeafContainer");
+          break;
+      }
+
+      
+      $(fallLeafContainer).append(fallLeaf);
+      console.log($(bulk).parent());
+      $(bulk).parent().parent().append(fallLeafContainer);
+    }, 50 * i);
+  }
+ 
+  
+
+  setTimeout(() => {
+    console.log("remove class attempt")
+    $(bulk).parent().removeClass("shake");
+    
+  }, 1000);
+
+}
